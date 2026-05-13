@@ -1,0 +1,13 @@
+.git/
+node_modules/
+.cache/
+.wrangler/
+dist/
+build/
+*.log
+*.zip
+*.rar
+*.7z
+Thumbs.db
+desktop.ini
+.DS_Store

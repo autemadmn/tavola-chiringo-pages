@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" role="img" aria-label="Sangria">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fff2df"/>
+      <stop offset="1" stop-color="#f6d7bc"/>
+    </linearGradient>
+    <linearGradient id="drink" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#d66b4f"/>
+      <stop offset="0.52" stop-color="#a93232"/>
+      <stop offset="1" stop-color="#6d1f29"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="30" stdDeviation="26" flood-color="#4b2019" flood-opacity="0.24"/>
+    </filter>
+  </defs>
+  <rect width="900" height="1200" fill="url(#bg)"/>
+  <circle cx="215" cy="230" r="120" fill="#f8c26d" opacity="0.45"/>
+  <circle cx="720" cy="930" r="165" fill="#8d9b6f" opacity="0.24"/>
+  <g filter="url(#shadow)">
+    <path d="M305 238h270c36 0 64 31 59 67l-66 516c-5 39-38 68-77 68H389c-39 0-72-29-77-68l-66-516c-5-36 23-67 59-67Z" fill="#fff9ef" opacity="0.92"/>
+    <path d="M286 394h308l-52 400c-4 31-30 54-62 54h-80c-32 0-58-23-62-54l-52-400Z" fill="url(#drink)"/>
+    <path d="M291 392c46 22 87 22 130 3 58-25 95-22 166 6l-8 61c-60-27-99-32-156-7-45 20-89 17-125-1l-7-62Z" fill="#eea163" opacity="0.72"/>
+    <path d="M314 279h251c18 0 32 14 32 32s-14 32-32 32H314c-18 0-32-14-32-32s14-32 32-32Z" fill="#fffaf2"/>
+    <path d="M592 413h45c54 0 97 44 97 98v93c0 54-43 98-97 98h-31l12-78h19c11 0 20-9 20-20v-93c0-11-9-20-20-20h-55l10-78Z" fill="#fff9ef" opacity="0.9"/>
+    <circle cx="365" cy="522" r="43" fill="#f4b45f"/>
+    <circle cx="488" cy="585" r="36" fill="#f9d36e"/>
+    <circle cx="416" cy="705" r="42" fill="#d94d45"/>
+    <path d="M344 520a43 43 0 0 1 64-37l-43 38 42 39a43 43 0 0 1-63-40Z" fill="#fff2b8" opacity="0.9"/>
+    <path d="M490 552a36 36 0 0 1 31 54l-64-32a36 36 0 0 1 33-22Z" fill="#fff6bd" opacity="0.9"/>
+    <path d="M390 310c58 18 107 17 151-2" fill="none" stroke="#ead5ba" stroke-width="12" stroke-linecap="round"/>
+    <path d="M371 247 320 126" fill="none" stroke="#6f7a5f" stroke-width="18" stroke-linecap="round"/>
+    <path d="M524 247 648 103" fill="none" stroke="#6f7a5f" stroke-width="18" stroke-linecap="round"/>
+    <path d="M636 112c-34 3-60-12-83-44 45-16 78-4 99 36l-16 8Z" fill="#7f986b"/>
+  </g>
+  <path d="M238 970c110 52 283 57 423 6" fill="none" stroke="#c9563a" stroke-width="12" stroke-linecap="round" opacity="0.28"/>
+</svg>
