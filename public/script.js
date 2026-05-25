@@ -92,10 +92,10 @@ const foodGroups = [
     items: [
       {
         id: "pulpo-pimenton",
-        title: "Lata de pulpo al pimentón",
-        price: "9,00 €",
-        description: "Lata de pulpo al pimentón.",
-        image: "assets/comidas/tapas/pulpo-al-pimenton.webp"
+        title: "Pulpo al pimentón con patatas a lo pobre",
+        price: "15,00 €",
+        description: "Pulpo al pimentón acompañado de patatas a lo pobre.",
+        image: "assets/comidas/tapas/pulpo-patatas-pobre.webp"
       },
       {
         id: "ensaladilla-rusa",
@@ -659,7 +659,7 @@ const productImageOverrides = {
   "papas-mejillones": "assets/comidas/aperitivo-picar/papasconmejillones.webp",
   "papas-boquerones": "assets/comidas/aperitivo-picar/papasconboquerones.webp",
   "papas-limon-berberechos": "assets/comidas/aperitivo-picar/papasfresquitasconlimonyberberechos.webp",
-  "pulpo-pimenton": "assets/comidas/tapas/latadepulpoalpimenton.webp",
+  "pulpo-pimenton": "assets/comidas/tapas/pulpo-patatas-pobre.webp",
   "ensaladilla-rusa": "assets/comidas/tapas/ensaladillarusa.webp",
   "ajo-arriero": "assets/comidas/tapas/ajoarriero.webp",
   "nachos-verano": "assets/comidas/tapas/nachosdeverano.webp",
@@ -894,9 +894,9 @@ const allergenData = {
     traces: ["Sulfitos"]
   },
   "pulpo-pimenton": {
-    title: "Pulpo pimentón",
+    title: "Pulpo al pimentón con patatas a lo pobre",
     contains: ["Moluscos"],
-    traces: []
+    traces: ["Gluten", "Sulfitos"]
   },
   "nachos-verano": {
     contains: ["Lácteos"],
@@ -991,8 +991,8 @@ const menuSections = [
   },
   {
     id: "cocteles",
-    category: "Cócteles",
-    shortLabel: "Cócteles",
+    category: "Cócteles y Spritz",
+    shortLabel: "Cócteles y Spritz",
     groups: cocktailGroups
   },
   {
@@ -1055,7 +1055,7 @@ const translations = {
     },
     sections: {
       bebidas: { category: "Bebidas", shortLabel: "Bebidas" },
-      cocteles: { category: "Cócteles", shortLabel: "Cócteles" },
+      cocteles: { category: "Cócteles y Spritz", shortLabel: "Cócteles y Spritz" },
       "granizados-smoothies": { category: "Smoothies y Frappés", shortLabel: "Smoothies y Frappés" },
       sangrias: { category: "Sangrías", shortLabel: "Sangrías" },
       comidas: { category: "Comida", shortLabel: "Comida" },
@@ -1124,8 +1124,8 @@ const translations = {
         description: "Papas con toque fresco de limón y berberechos."
       },
       "pulpo-pimenton": {
-        title: "Lata de pulpo al pimentón",
-        description: "Lata de pulpo al pimentón."
+        title: "Pulpo al pimentón con patatas a lo pobre",
+        description: "Pulpo al pimentón acompañado de patatas a lo pobre."
       },
       "ensaladilla-rusa": {
         title: "Ensaladilla rusa",
@@ -1478,7 +1478,7 @@ const translations = {
       "papas-mejillones": { title: "Potato chips with mussels", description: "Potato chips served with mussels." },
       "papas-boquerones": { title: "Potato chips with anchovies", description: "Potato chips served with anchovies." },
       "papas-limon-berberechos": { title: "Fresh chips with lemon and cockles", description: "Potato chips with a fresh touch of lemon and cockles." },
-      "pulpo-pimenton": { title: "Tin of octopus with paprika", description: "Tin of octopus with paprika." },
+      "pulpo-pimenton": { title: "Octopus with paprika and poor man's potatoes", description: "Octopus with paprika served with poor man's potatoes." },
       "ensaladilla-rusa": { title: "Russian salad", description: "Classic Russian salad." },
       "ajo-arriero": { title: "Ajo arriero", description: "Traditional ajo arriero tapa." },
       "nachos-verano": { title: "Summer nachos", description: "Sour cream, guacamole, and Mexican sauce." },
@@ -1655,7 +1655,7 @@ const translations = {
       "papas-mejillones": { title: "Kartoffelchips mit Miesmuscheln", description: "Kartoffelchips mit Miesmuscheln." },
       "papas-boquerones": { title: "Kartoffelchips mit Sardellen", description: "Kartoffelchips mit Sardellen." },
       "papas-limon-berberechos": { title: "Frische Chips mit Zitrone und Herzmuscheln", description: "Kartoffelchips mit frischer Zitrone und Herzmuscheln." },
-      "pulpo-pimenton": { title: "Dose Oktopus mit Paprika", description: "Dose Oktopus mit Paprika." },
+      "pulpo-pimenton": { title: "Oktopus mit Paprika und Kartoffeln", description: "Oktopus mit Paprika, serviert mit Kartoffeln." },
       "ensaladilla-rusa": { title: "Russischer Salat", description: "Klassischer russischer Salat." },
       "ajo-arriero": { title: "Ajo arriero", description: "Traditionelle Ajo-arriero-Tapa." },
       "nachos-verano": { title: "Sommer-Nachos", description: "Sour Cream, Guacamole und mexikanische Sauce." },
