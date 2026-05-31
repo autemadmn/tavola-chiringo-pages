@@ -49,13 +49,6 @@ const foodGroups = [
         image: "assets/comidas/genericas/ensalada.webp"
       },
       {
-        id: "edamame",
-        title: "Edamame",
-        price: "4,00 €",
-        description: "Vainas de soja al vapor, ligeras y sabrosas.",
-        image: "assets/comidas/genericas/ensalada.webp"
-      },
-      {
         id: "barqueta-mini-fuets",
         title: "Barqueta de mini fuets",
         price: "7,00 €",
@@ -93,7 +86,7 @@ const foodGroups = [
       {
         id: "pulpo-pimenton",
         title: "Pulpo al pimentón con patatas a lo pobre",
-        price: "15,00 €",
+        price: "12,00 €",
         description: "Pulpo al pimentón acompañado de patatas a lo pobre.",
         image: "assets/comidas/tapas/pulpo-patatas-pobre.webp"
       },
@@ -207,6 +200,14 @@ const foodGroups = [
         description: "Bocadillo de lomo con ajos tiernos.",
         note: "Acompañados con papas.",
         image: "assets/comidas/genericas/bruschetta.webp"
+      },
+      {
+        id: "bocadillo-atun-tomate",
+        title: "Bocadillo de atún con tomate",
+        price: "9,00 €",
+        description: "Bocadillo de atún con tomate.",
+        note: "Acompañados con papas.",
+        image: "assets/comidas/bocadillos/bocadillo-atun-tomate.webp"
       }
     ]
   },
@@ -265,18 +266,11 @@ const foodGroups = [
     shortLabel: "Platos",
     items: [
       {
-        id: "ensalada-bonito",
-        title: "Ensalada de boniato",
+        id: "ensalada-quinoa",
+        title: "Ensalada de quinoa",
         price: "10,00 €",
-        description: "Ración de ensalada de boniato.",
-        image: "assets/comidas/platos-preparados/ensaladadeboniato.webp"
-      },
-      {
-        id: "pollo-asado-patatas",
-        title: "Pollo asado con patatas",
-        price: "10,00 €",
-        description: "Ración de pollo asado acompañado de patatas.",
-        image: "assets/comidas/genericas/risotto.webp"
+        description: "Ración de ensalada de quinoa.",
+        image: "assets/comidas/platos-preparados/ensalada-quinoa-1.webp"
       },
       {
         id: "costillas-barbacoa",
@@ -654,7 +648,6 @@ const productImageOverrides = {
   "frutos-secos": "assets/comidas/aperitivo-picar/frutossecos.webp",
   papas: "assets/comidas/aperitivo-picar/papas.webp",
   aceitunas: "assets/comidas/aperitivo-picar/aceitunas.webp",
-  edamame: "assets/comidas/aperitivo-picar/edamame.webp",
   "barqueta-mini-fuets": "assets/comidas/aperitivo-picar/barquetademinifuets.webp",
   "papas-mejillones": "assets/comidas/aperitivo-picar/papasconmejillones.webp",
   "papas-boquerones": "assets/comidas/aperitivo-picar/papasconboquerones.webp",
@@ -671,14 +664,14 @@ const productImageOverrides = {
   "bocadillo-escalivada": "assets/comidas/bocadillos/bocadilloescalivada.webp",
   "magro-tomate": "assets/comidas/bocadillos/magrocontomate.webp",
   "lomo-ajos-tiernos": "assets/comidas/bocadillos/lomoconajostiernos.webp",
+  "bocadillo-atun-tomate": "assets/comidas/bocadillos/bocadillo-atun-tomate.webp",
   margarita: "assets/comidas/pizzas/margarita.webp",
   tartufata: "assets/comidas/pizzas/tartufata.webp",
   "jamon-queso": "assets/comidas/pizzas/jamonyqueso.webp",
   "cuatro-quesos": "assets/comidas/pizzas/4quesos.webp",
   peperoni: "assets/comidas/pizzas/peperoni.webp",
   canibal: "assets/comidas/pizzas/canibal.webp",
-  "ensalada-bonito": "assets/comidas/platos-preparados/ensaladadeboniato.webp",
-  "pollo-asado-patatas": "assets/comidas/platos-preparados/polloasadoconpatatas.webp",
+  "ensalada-quinoa": "assets/comidas/platos-preparados/ensalada-quinoa-1.webp",
   "costillas-barbacoa": "assets/comidas/platos-preparados/costillasalabarbacoa.webp",
   "salmon-teriyaki": "assets/comidas/platos-preparados/salmonteriyakiconarroz.webp",
   "pollo-curry": "assets/comidas/platos-preparados/polloalcurryconarroz.webp",
@@ -879,10 +872,6 @@ const allergenData = {
     contains: [],
     traces: ["Sulfitos"]
   },
-  edamame: {
-    contains: ["Soja"],
-    traces: []
-  },
   "barqueta-mini-fuets": {
     title: "Mini fuets",
     contains: [],
@@ -938,6 +927,10 @@ const allergenData = {
     contains: ["Gluten"],
     traces: []
   },
+  "bocadillo-atun-tomate": {
+    contains: ["Gluten", "Pescado"],
+    traces: []
+  },
   margarita: {
     title: "Pizza margarita",
     contains: ["Gluten", "Lácteos"],
@@ -966,6 +959,10 @@ const allergenData = {
   canibal: {
     title: "Pizza canibal",
     contains: ["Gluten", "Lácteos"],
+    traces: []
+  },
+  "ensalada-quinoa": {
+    contains: ["Lácteos"],
     traces: []
   },
   "salmon-teriyaki": {
@@ -1103,10 +1100,6 @@ const translations = {
         title: "Aceitunas",
         description: "Aceitunas servidas como aperitivo."
       },
-      edamame: {
-        title: "Edamame",
-        description: "Vainas de soja al vapor, ligeras y sabrosas."
-      },
       "barqueta-mini-fuets": {
         title: "Barqueta de mini fuets",
         description: "Mini fuets servidos en barqueta."
@@ -1186,6 +1179,11 @@ const translations = {
         description: "Bocadillo de lomo con ajos tiernos.",
         note: "Acompañados con papas."
       },
+      "bocadillo-atun-tomate": {
+        title: "Bocadillo de atún con tomate",
+        description: "Bocadillo de atún con tomate.",
+        note: "Acompañados con papas."
+      },
       margarita: {
         title: "Margarita",
         description: "Pizza clásica con tomate, mozzarella y albahaca."
@@ -1210,13 +1208,9 @@ const translations = {
         title: "Canibal",
         description: "Bacon, peperoni y jamón york."
       },
-      "ensalada-bonito": {
-        title: "Ensalada de boniato",
-        description: "Ración de ensalada de boniato."
-      },
-      "pollo-asado-patatas": {
-        title: "Pollo asado con patatas",
-        description: "Ración de pollo asado acompañado de patatas."
+      "ensalada-quinoa": {
+        title: "Ensalada de quinoa",
+        description: "Ración de ensalada de quinoa."
       },
       "costillas-barbacoa": {
         title: "Costillas a la barbacoa",
@@ -1473,7 +1467,6 @@ const translations = {
       "frutos-secos": { title: "Mixed nuts", description: "Classic snack to pair with your drink." },
       papas: { title: "Potato chips", description: "Crispy potato chips." },
       aceitunas: { title: "Olives", description: "Olives served as an aperitif." },
-      edamame: { title: "Edamame", description: "Steamed soybeans, light and tasty." },
       "barqueta-mini-fuets": { title: "Tray of mini fuets", description: "Mini fuets served in a tray." },
       "papas-mejillones": { title: "Potato chips with mussels", description: "Potato chips served with mussels." },
       "papas-boquerones": { title: "Potato chips with anchovies", description: "Potato chips served with anchovies." },
@@ -1493,14 +1486,14 @@ const translations = {
       "bocadillo-escalivada": { title: "Escalivada sandwich", description: "Sandwich with escalivada grilled vegetables.", note: "Served with potato chips." },
       "magro-tomate": { title: "Pork with tomato", description: "Pork and tomato sandwich.", note: "Served with potato chips." },
       "lomo-ajos-tiernos": { title: "Pork loin with tender garlic", description: "Pork loin sandwich with tender garlic shoots.", note: "Served with potato chips." },
+      "bocadillo-atun-tomate": { title: "Tuna and tomato sandwich", description: "Tuna and tomato sandwich.", note: "Served with potato chips." },
       margarita: { title: "Margherita", description: "Classic pizza with tomato, mozzarella, and basil." },
       tartufata: { title: "Tartufata", description: "Ham, cheese, and truffle." },
       "jamon-queso": { title: "Ham and cheese", description: "Ham and cheese pizza." },
       "cuatro-quesos": { title: "4 cheeses", description: "Pizza with a blend of four cheeses." },
       peperoni: { title: "Pepperoni", description: "Pizza with pepperoni." },
       canibal: { title: "Canibal", description: "Bacon, pepperoni, and York ham." },
-      "ensalada-bonito": { title: "Sweet potato salad", description: "Individual portion of sweet potato salad." },
-      "pollo-asado-patatas": { title: "Roast chicken with potatoes", description: "Individual portion of roast chicken served with potatoes." },
+      "ensalada-quinoa": { title: "Quinoa salad", description: "Individual portion of quinoa salad." },
       "costillas-barbacoa": { title: "BBQ ribs", description: "Individual portion of ribs with barbecue sauce." },
       "salmon-teriyaki": { title: "Teriyaki salmon with rice", description: "Individual portion of salmon with teriyaki sauce served with rice." },
       "pollo-curry": { title: "Chicken curry with rice", description: "Individual portion of chicken curry served with rice." },
@@ -1650,7 +1643,6 @@ const translations = {
       "frutos-secos": { title: "Gemischte Nüsse", description: "Klassischer Snack zum Getränk." },
       papas: { title: "Kartoffelchips", description: "Knusprige Kartoffelchips." },
       aceitunas: { title: "Oliven", description: "Oliven als Aperitif serviert." },
-      edamame: { title: "Edamame", description: "Gedämpfte Sojabohnen, leicht und aromatisch." },
       "barqueta-mini-fuets": { title: "Schale mit Mini-Fuets", description: "Mini-Fuets in einer Schale serviert." },
       "papas-mejillones": { title: "Kartoffelchips mit Miesmuscheln", description: "Kartoffelchips mit Miesmuscheln." },
       "papas-boquerones": { title: "Kartoffelchips mit Sardellen", description: "Kartoffelchips mit Sardellen." },
@@ -1670,14 +1662,14 @@ const translations = {
       "bocadillo-escalivada": { title: "Bocadillo mit Escalivada", description: "Bocadillo mit Escalivada.", note: "Mit Kartoffelchips serviert." },
       "magro-tomate": { title: "Schweinefleisch mit Tomate", description: "Bocadillo mit Schweinefleisch und Tomate.", note: "Mit Kartoffelchips serviert." },
       "lomo-ajos-tiernos": { title: "Schweinelende mit jungem Knoblauch", description: "Bocadillo mit Schweinelende und jungem Knoblauch.", note: "Mit Kartoffelchips serviert." },
+      "bocadillo-atun-tomate": { title: "Bocadillo mit Thunfisch und Tomate", description: "Bocadillo mit Thunfisch und Tomate.", note: "Mit Kartoffelchips serviert." },
       margarita: { title: "Margherita", description: "Klassische Pizza mit Tomate, Mozzarella und Basilikum." },
       tartufata: { title: "Tartufata", description: "Schinken, Käse und Trüffel." },
       "jamon-queso": { title: "Schinken und Käse", description: "Pizza mit Schinken und Käse." },
       "cuatro-quesos": { title: "4 Käse", description: "Pizza mit einer Mischung aus vier Käsesorten." },
       peperoni: { title: "Peperoni", description: "Pizza mit Peperoni." },
       canibal: { title: "Canibal", description: "Bacon, Peperoni und York-Schinken." },
-      "ensalada-bonito": { title: "Süßkartoffelsalat", description: "Einzelportion Süßkartoffelsalat." },
-      "pollo-asado-patatas": { title: "Brathähnchen mit Kartoffeln", description: "Einzelportion Brathähnchen mit Kartoffeln." },
+      "ensalada-quinoa": { title: "Quinoa-Salat", description: "Einzelportion Quinoa-Salat." },
       "costillas-barbacoa": { title: "BBQ-Rippchen", description: "Einzelportion Rippchen mit Barbecue-Sauce." },
       "salmon-teriyaki": { title: "Teriyaki-Lachs mit Reis", description: "Einzelportion Lachs mit Teriyaki-Sauce und Reis." },
       "pollo-curry": { title: "Hähnchen-Curry mit Reis", description: "Einzelportion Hähnchen-Curry mit Reis." },
