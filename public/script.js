@@ -697,60 +697,27 @@ function applyProductImageOverrides(groups) {
   sangriaGroups
 ].forEach(applyProductImageOverrides);
 
-const hamacaTariffPeriods = [
+const hamacaTariffs = [
   {
-    id: "fin-semana",
-    label: "Viernes, sábado y domingo",
-    tariffs: [
-      {
-        id: "mananas",
-        icon: "morning",
-        name: "Turno mañanas",
-        schedule: "10:00h a 15:00h",
-        price: "25€"
-      },
-      {
-        id: "tardes",
-        icon: "afternoon",
-        name: "Turno tardes",
-        schedule: "15:00h a 20:00h",
-        price: "25€"
-      },
-      {
-        id: "todo-dia",
-        icon: "full-day",
-        name: "Todo el día",
-        schedule: "10:00h a 20:00h",
-        price: "45€"
-      }
-    ]
+    id: "todo-dia",
+    icon: "full-day",
+    name: "Todo el día",
+    schedule: "10:00h a 20:00h",
+    price: "45€"
   },
   {
-    id: "lunes-jueves",
-    label: "Lunes a jueves",
-    tariffs: [
-      {
-        id: "mananas",
-        icon: "morning",
-        name: "Turno mañanas",
-        schedule: "10:00h a 15:00h",
-        price: "20€"
-      },
-      {
-        id: "tardes",
-        icon: "afternoon",
-        name: "Turno tardes",
-        schedule: "15:00h a 20:00h",
-        price: "20€"
-      },
-      {
-        id: "todo-dia",
-        icon: "full-day",
-        name: "Todo el día",
-        schedule: "10:00h a 20:00h",
-        price: "35€"
-      }
-    ]
+    id: "mananas",
+    icon: "morning",
+    name: "Turno mañanas",
+    schedule: "10:00h a 15:00h",
+    price: "25€"
+  },
+  {
+    id: "tardes",
+    icon: "afternoon",
+    name: "Turno tardes",
+    schedule: "15:00h a 20:00h",
+    price: "25€"
   }
 ];
 
@@ -771,10 +738,6 @@ const hamacaBenefits = [
 
 const hamacaLanguageCopy = {
   es: {
-    periods: {
-      "fin-semana": "Viernes, sábado y domingo",
-      "lunes-jueves": "Lunes a jueves"
-    },
     tariffs: {
       mananas: "Turno mañanas",
       tardes: "Turno tardes",
@@ -784,10 +747,6 @@ const hamacaLanguageCopy = {
     benefits: hamacaBenefits
   },
   en: {
-    periods: {
-      "fin-semana": "Friday, Saturday and Sunday",
-      "lunes-jueves": "Monday to Thursday"
-    },
     tariffs: {
       mananas: "Morning session",
       tardes: "Afternoon session",
@@ -808,10 +767,6 @@ const hamacaLanguageCopy = {
     ]
   },
   de: {
-    periods: {
-      "fin-semana": "Freitag, Samstag und Sonntag",
-      "lunes-jueves": "Montag bis Donnerstag"
-    },
     tariffs: {
       mananas: "Vormittag",
       tardes: "Nachmittag",
@@ -1042,11 +997,10 @@ const translations = {
       tariffPlural: "tarifas",
       scheduleLabel: "Horario",
       includesTitle: "Incluye 2 bebidas",
-      drinksList: "Cerveza, refresco, vino o vermut",
+      drinksList: "Cerveza, tinto verano, café, refresco, vino o vermut",
       reserveLabel: "Reservar",
       rulesTitle: "Normas Beach Club",
       infoTitle: "Información adicional",
-      selectDaysLabel: "Selecciona días",
       selectTurnLabel: "Selecciona turno",
       priceLabel: "Precio por sombrilla y hamacas"
     },
@@ -1375,11 +1329,10 @@ const translations = {
       tariffPlural: "rates",
       scheduleLabel: "Time",
       includesTitle: "Includes 2 drinks",
-      drinksList: "Beer, soft drink, wine, or vermouth",
+      drinksList: "Beer, tinto de verano, coffee, soft drink, wine, or vermouth",
       reserveLabel: "Book",
       rulesTitle: "Beach Club Rules",
       infoTitle: "Additional information",
-      selectDaysLabel: "Select days",
       selectTurnLabel: "Select session",
       priceLabel: "Price per umbrella and sunbeds"
     },
@@ -1551,11 +1504,10 @@ const translations = {
       tariffPlural: "Tarife",
       scheduleLabel: "Uhrzeit",
       includesTitle: "Inklusive 2 Getränke",
-      drinksList: "Bier, Softdrink, Wein oder Wermut",
+      drinksList: "Bier, Tinto de verano, Kaffee, Softdrink, Wein oder Wermut",
       reserveLabel: "Reservieren",
       rulesTitle: "Beach Club Regeln",
       infoTitle: "Zusätzliche Informationen",
-      selectDaysLabel: "Tage auswählen",
       selectTurnLabel: "Turnus auswählen",
       priceLabel: "Preis pro Sonnenschirm und Liegen"
     },
@@ -1754,8 +1706,7 @@ const allergenTitle = document.querySelector("#allergenTitle");
 const allergenModalContent = document.querySelector("#allergenModalContent");
 
 let activeSectionId = "bebidas";
-let activeHamacaPeriodId = "fin-semana";
-let activeHamacaTurnId = "mananas";
+let activeHamacaTurnId = "todo-dia";
 let currentLanguage = getSavedLanguage();
 let lastFocusedElement = null;
 let ignoreNextImageClick = false;
@@ -2013,28 +1964,12 @@ function createEmptySection(section) {
   return emptyState;
 }
 
-function getHamacaDrinkOptions() {
-  const drinks = {
-    es: ["Cerveza", "Refresco", "Vino", "Vermut"],
-    en: ["Beer", "Soft drink", "Wine", "Vermouth"],
-    de: ["Bier", "Softdrink", "Wein", "Wermut"]
-  };
-
-  return drinks[currentLanguage] || drinks.es;
-}
-
 function getHamacaCopy() {
   return hamacaLanguageCopy[currentLanguage] || hamacaLanguageCopy.es;
 }
 
-function getActiveHamacaPeriod() {
-  return hamacaTariffPeriods.find((period) => period.id === activeHamacaPeriodId) || hamacaTariffPeriods[0];
-}
-
 function getActiveHamacaTariff() {
-  const activePeriod = getActiveHamacaPeriod();
-
-  return activePeriod.tariffs.find((tariff) => tariff.id === activeHamacaTurnId) || activePeriod.tariffs[0];
+  return hamacaTariffs.find((tariff) => tariff.id === activeHamacaTurnId) || hamacaTariffs[0];
 }
 
 function createHamacaIcon(type) {
@@ -2126,41 +2061,7 @@ function createHamacaBenefits() {
   return block;
 }
 
-function createHamacaDaySelector(activePeriod) {
-  const ui = getUiCopy();
-  const hamacaCopy = getHamacaCopy();
-  const block = document.createElement("section");
-  const title = document.createElement("h3");
-  const options = document.createElement("div");
-
-  block.className = "hamaca-selector hamaca-days";
-  title.textContent = ui.selectDaysLabel;
-  options.className = "hamaca-choice-row";
-
-  hamacaTariffPeriods.forEach((period) => {
-    const button = document.createElement("button");
-    const label = document.createElement("span");
-    const isActive = period.id === activePeriod.id;
-
-    button.className = "hamaca-choice hamaca-day-choice";
-    button.type = "button";
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-    label.textContent = hamacaCopy.periods[period.id] || period.label;
-    button.append(createHamacaIcon("beach"), label);
-    button.addEventListener("click", () => {
-      activeHamacaPeriodId = period.id;
-      renderActiveSection();
-    });
-
-    options.append(button);
-  });
-
-  block.append(title, options);
-  return block;
-}
-
-function createHamacaTurnSelector(activePeriod, activeTariff) {
+function createHamacaTurnSelector(activeTariff) {
   const ui = getUiCopy();
   const hamacaCopy = getHamacaCopy();
   const block = document.createElement("section");
@@ -2171,7 +2072,7 @@ function createHamacaTurnSelector(activePeriod, activeTariff) {
   title.textContent = ui.selectTurnLabel;
   options.className = "hamaca-turn-grid";
 
-  activePeriod.tariffs.forEach((tariff) => {
+  hamacaTariffs.forEach((tariff) => {
     const button = document.createElement("button");
     const text = document.createElement("span");
     const label = document.createElement("strong");
@@ -2198,7 +2099,7 @@ function createHamacaTurnSelector(activePeriod, activeTariff) {
   return block;
 }
 
-function createHamacaHeroCard(activePeriod, activeTariff) {
+function createHamacaHeroCard(activeTariff) {
   const ui = getUiCopy();
   const hamacaCopy = getHamacaCopy();
   const card = document.createElement("article");
@@ -2211,7 +2112,6 @@ function createHamacaHeroCard(activePeriod, activeTariff) {
   const priceBlock = document.createElement("div");
   const priceLabel = document.createElement("span");
   const price = document.createElement("strong");
-  const periodPill = document.createElement("small");
   const drinksBlock = document.createElement("div");
   const drinksCopy = document.createElement("div");
   const drinksTitle = document.createElement("strong");
@@ -2223,7 +2123,6 @@ function createHamacaHeroCard(activePeriod, activeTariff) {
   info.className = "hamaca-visual-info";
   priceBlock.className = "hamaca-price-block";
   priceLabel.className = "hamaca-price-label";
-  periodPill.className = "hamaca-period-pill";
   drinksBlock.className = "hamaca-drinks-block";
 
   image.src = "assets/hamacas/hamaca1.webp";
@@ -2234,13 +2133,12 @@ function createHamacaHeroCard(activePeriod, activeTariff) {
   schedule.textContent = activeTariff.schedule;
   priceLabel.textContent = ui.priceLabel;
   price.textContent = activeTariff.price;
-  periodPill.textContent = hamacaCopy.periods[activePeriod.id] || activePeriod.label;
   drinksTitle.textContent = ui.includesTitle;
   drinksText.textContent = ui.drinksList;
 
   overlay.append(turn, schedule);
   imageWrap.append(image, overlay);
-  priceBlock.append(priceLabel, price, periodPill);
+  priceBlock.append(priceLabel, price);
   drinksCopy.append(drinksTitle, drinksText);
   drinksBlock.append(createHamacaIcon("drink"), drinksCopy);
   info.append(priceBlock, drinksBlock);
@@ -2262,14 +2160,12 @@ function createHamacaReserveButton() {
 
 function createHamacasSection() {
   const wrapper = document.createElement("div");
-  const activePeriod = getActiveHamacaPeriod();
   const activeTariff = getActiveHamacaTariff();
 
   wrapper.className = "hamacas-section";
   wrapper.append(
-    createHamacaDaySelector(activePeriod),
-    createHamacaTurnSelector(activePeriod, activeTariff),
-    createHamacaHeroCard(activePeriod, activeTariff),
+    createHamacaTurnSelector(activeTariff),
+    createHamacaHeroCard(activeTariff),
     createHamacaReserveButton(),
     createHamacaRules(),
     createHamacaBenefits()
