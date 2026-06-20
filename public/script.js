@@ -420,14 +420,6 @@ const granizadosSmoothiesGroups = [
     shortLabel: "Smoothies",
     items: [
       {
-        id: "granizado-limon",
-        title: "Granizado Limón",
-        price: "5,00 €",
-        description: "Granizado refrescante de limón natural.",
-        note: "Suplemento 3 € con alcohol.",
-        image: "assets/granizados-smoothies/granizado-limon.webp"
-      },
-      {
         id: "smoothie-pina-coco",
         title: "Smoothie Piña & Coco",
         price: "7,00 €",
@@ -1186,11 +1178,6 @@ const translations = {
         title: "Paella Valenciana",
         description: "Ración de paella valenciana tradicional."
       },
-      "granizado-limon": {
-        title: "Granizado Limón",
-        description: "Granizado refrescante de limón natural.",
-        note: "Suplemento 3 € con alcohol."
-      },
       "smoothie-pina-coco": {
         title: "Smoothie Piña & Coco",
         description: "Smoothie tropical de piña y coco.",
@@ -1452,7 +1439,6 @@ const translations = {
       "pollo-curry": { title: "Chicken curry with rice", description: "Individual portion of chicken curry served with rice." },
       "macarrones-bolonesa": { title: "Macaroni Bolognese", description: "Individual portion of macaroni with Bolognese sauce." },
       "paella-valenciana": { title: "Valencian paella", description: "Individual portion of traditional Valencian paella." },
-      "granizado-limon": { title: "Lemon slushie", description: "Refreshing natural lemon slushie.", note: "Alcohol supplement +3 €." },
       "smoothie-pina-coco": { title: "Pineapple & coconut smoothie", description: "Tropical pineapple and coconut smoothie.", note: "Alcohol supplement +3 €." },
       "smoothie-melon": { title: "Melon smoothie", description: "Smooth and refreshing melon smoothie.", note: "Alcohol supplement +3 €." },
       "smoothie-maracuya-mango": { title: "Passion fruit & mango smoothie", description: "Exotic passion fruit and mango smoothie.", note: "Alcohol supplement +3 €." },
@@ -1627,7 +1613,6 @@ const translations = {
       "pollo-curry": { title: "Hähnchen-Curry mit Reis", description: "Einzelportion Hähnchen-Curry mit Reis." },
       "macarrones-bolonesa": { title: "Makkaroni Bolognese", description: "Einzelportion Makkaroni mit Bolognese-Sauce." },
       "paella-valenciana": { title: "Valencianische Paella", description: "Einzelportion traditionelle valencianische Paella." },
-      "granizado-limon": { title: "Zitronen-Granita", description: "Erfrischende Granita aus natürlicher Zitrone.", note: "Aufpreis mit Alkohol: 3 €." },
       "smoothie-pina-coco": { title: "Ananas & Kokos-Smoothie", description: "Tropischer Smoothie aus Ananas und Kokos.", note: "Aufpreis mit Alkohol: 3 €." },
       "smoothie-melon": { title: "Melonen-Smoothie", description: "Sanfter und erfrischender Melonen-Smoothie.", note: "Aufpreis mit Alkohol: 3 €." },
       "smoothie-maracuya-mango": { title: "Maracuja & Mango-Smoothie", description: "Exotischer Smoothie aus Maracuja und Mango.", note: "Aufpreis mit Alkohol: 3 €." },
