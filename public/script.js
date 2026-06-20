@@ -18,7 +18,7 @@ const foodGroups = [
         price: "9,00 €",
         description: "Café o té/infusión + zumo + tostada a elegir: tostada jamón con tomate, salmón y aguacate, o atún con tomate.",
         note: "Hasta las 12:00h",
-        image: "assets/comidas/desayuno/desayuno-supreme.webp"
+        image: "assets/comidas/desayuno/28_05_26_TAVOLAWEB-161.jpg"
       }
     ]
   },
@@ -95,7 +95,7 @@ const foodGroups = [
         title: "Ensaladilla rusa",
         price: "9,00 €",
         description: "Ensaladilla rusa clásica.",
-        image: "assets/comidas/genericas/ensalada.webp"
+        image: "assets/comidas/tapas/28_05_26_TAVOLAWEB-94.jpg"
       },
       {
         id: "ajo-arriero",
@@ -191,7 +191,7 @@ const foodGroups = [
         price: "11,00 €",
         description: "Bocadillo de magro con tomate.",
         note: "Acompañados con papas.",
-        image: "assets/comidas/genericas/bruschetta.webp"
+        image: "assets/comidas/bocadillos/28_05_26_TAVOLAWEB-84.jpg"
       },
       {
         id: "lomo-ajos-tiernos",
@@ -249,7 +249,7 @@ const foodGroups = [
         title: "Peperoni",
         price: "14,00 €",
         description: "Pizza con peperoni.",
-        image: "assets/comidas/genericas/pasta.webp"
+        image: "assets/comidas/pizzas/28_05_26_TAVOLAWEB-218.jpg"
       },
       {
         id: "canibal",
@@ -636,7 +636,7 @@ const sangriaGroups = [
 
 const productImageOverrides = {
   "desayuno-tradicional": "assets/comidas/desayuno/desayunotradicional.webp",
-  "desayuno-supreme": "assets/comidas/desayuno/desayunosuprem.webp",
+  "desayuno-supreme": "assets/comidas/desayuno/28_05_26_TAVOLAWEB-161.jpg",
   "frutos-secos": "assets/comidas/aperitivo-picar/frutossecos.webp",
   papas: "assets/comidas/aperitivo-picar/papas.webp",
   aceitunas: "assets/comidas/aperitivo-picar/aceitunas.webp",
@@ -645,7 +645,7 @@ const productImageOverrides = {
   "papas-boquerones": "assets/comidas/aperitivo-picar/papasconboquerones.webp",
   "papas-limon-berberechos": "assets/comidas/aperitivo-picar/papasfresquitasconlimonyberberechos.webp",
   "pulpo-pimenton": "assets/comidas/tapas/pulpo-patatas-pobre.webp",
-  "ensaladilla-rusa": "assets/comidas/tapas/ensaladillarusa.webp",
+  "ensaladilla-rusa": "assets/comidas/tapas/28_05_26_TAVOLAWEB-94.jpg",
   "ajo-arriero": "assets/comidas/tapas/ajoarriero.webp",
   "nachos-verano": "assets/comidas/tapas/nachosdeverano.webp",
   "nachos-tartar-salmon": "assets/comidas/tapas/nachoscontartardesalmon.webp",
@@ -654,14 +654,14 @@ const productImageOverrides = {
   "tortilla-jamon": "assets/comidas/tapas/minitortillaconjamon.webp",
   "mejillones-vapor-limon": "assets/comidas/tapas/mejillonesalvaporconlimon.webp",
   "bocadillo-escalivada": "assets/comidas/bocadillos/bocadilloescalivada.webp",
-  "magro-tomate": "assets/comidas/bocadillos/magrocontomate.webp",
+  "magro-tomate": "assets/comidas/bocadillos/28_05_26_TAVOLAWEB-84.jpg",
   "lomo-ajos-tiernos": "assets/comidas/bocadillos/lomoconajostiernos.webp",
   "bocadillo-atun-tomate": "assets/comidas/bocadillos/bocadillo-atun-tomate.webp",
   margarita: "assets/comidas/pizzas/margarita.webp",
   tartufata: "assets/comidas/pizzas/tartufata.webp",
   "jamon-queso": "assets/comidas/pizzas/jamonyqueso.webp",
   "cuatro-quesos": "assets/comidas/pizzas/4quesos.webp",
-  peperoni: "assets/comidas/pizzas/peperoni.webp",
+  peperoni: "assets/comidas/pizzas/28_05_26_TAVOLAWEB-218.jpg",
   canibal: "assets/comidas/pizzas/canibal.webp",
   "ensalada-quinoa": "assets/comidas/platos-preparados/ensalada-quinoa-1.webp",
   "costillas-barbacoa": "assets/comidas/platos-preparados/costillasalabarbacoa.webp",
