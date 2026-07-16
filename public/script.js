@@ -208,6 +208,22 @@ const foodGroups = [
         description: "Bocadillo de atún con tomate.",
         note: "Acompañados con papas.",
         image: "assets/comidas/bocadillos/bocadillo-atun-tomate.webp"
+      },
+      {
+        id: "bocadillo-jamon-tomate-rucula",
+        title: "Bocadillo de jamón con tomate y rúcula",
+        price: "11,00 €",
+        description: "Bocadillo de jamón, tomate fresco y rúcula.",
+        note: "Acompañados con papas.",
+        image: "assets/comidas/bocadillos/bocadillo-jamon-tomate-rucula.webp"
+      },
+      {
+        id: "bocadillo-lomo-queso",
+        title: "Bocadillo de lomo y queso",
+        price: "11,00 €",
+        description: "Bocadillo de lomo con queso fundido.",
+        note: "Acompañados con papas.",
+        image: "assets/comidas/bocadillos/bocadillo-lomo-queso.webp"
       }
     ]
   },
@@ -284,7 +300,7 @@ const foodGroups = [
         title: "Salmón Teriyaki",
         price: "10,00 €",
         description: "Ración de salmón con salsa teriyaki servido con arroz.",
-        image: "assets/comidas/platos-preparados/salmonteriyakiconarroz.webp"
+        image: "assets/comidas/platos-preparados/salmonteriyakinuevo.webp"
       },
       {
         id: "pollo-curry",
@@ -657,6 +673,8 @@ const productImageOverrides = {
   "magro-tomate": "assets/comidas/bocadillos/28_05_26_TAVOLAWEB-84.jpg",
   "lomo-ajos-tiernos": "assets/comidas/bocadillos/lomoconajostiernos.webp",
   "bocadillo-atun-tomate": "assets/comidas/bocadillos/bocadillo-atun-tomate.webp",
+  "bocadillo-jamon-tomate-rucula": "assets/comidas/bocadillos/bocadillo-jamon-tomate-rucula.webp",
+  "bocadillo-lomo-queso": "assets/comidas/bocadillos/bocadillo-lomo-queso.webp",
   margarita: "assets/comidas/pizzas/margarita.webp",
   tartufata: "assets/comidas/pizzas/tartufata.webp",
   "jamon-queso": "assets/comidas/pizzas/jamonyqueso.webp",
@@ -665,7 +683,7 @@ const productImageOverrides = {
   canibal: "assets/comidas/pizzas/canibal.webp",
   "ensalada-quinoa": "assets/comidas/platos-preparados/ensalada-quinoa-1.webp",
   "costillas-barbacoa": "assets/comidas/platos-preparados/costillasalabarbacoa.webp",
-  "salmon-teriyaki": "assets/comidas/platos-preparados/salmonteriyakiconarroz.webp",
+  "salmon-teriyaki": "assets/comidas/platos-preparados/salmonteriyakinuevo.webp",
   "pollo-curry": "assets/comidas/platos-preparados/polloalcurryconarroz.webp",
   "macarrones-bolonesa": "assets/comidas/platos-preparados/macarronesbolonesa.webp",
   "paella-valenciana": "assets/comidas/platos-preparados/paella.webp"
@@ -876,6 +894,14 @@ const allergenData = {
   },
   "bocadillo-atun-tomate": {
     contains: ["Gluten", "Pescado"],
+    traces: []
+  },
+  "bocadillo-jamon-tomate-rucula": {
+    contains: ["Gluten"],
+    traces: []
+  },
+  "bocadillo-lomo-queso": {
+    contains: ["Gluten", "Lácteos"],
     traces: []
   },
   margarita: {
@@ -1128,6 +1154,16 @@ const translations = {
       "bocadillo-atun-tomate": {
         title: "Bocadillo de atún con tomate",
         description: "Bocadillo de atún con tomate.",
+        note: "Acompañados con papas."
+      },
+      "bocadillo-jamon-tomate-rucula": {
+        title: "Bocadillo de jamón con tomate y rúcula",
+        description: "Bocadillo de jamón, tomate fresco y rúcula.",
+        note: "Acompañados con papas."
+      },
+      "bocadillo-lomo-queso": {
+        title: "Bocadillo de lomo y queso",
+        description: "Bocadillo de lomo con queso fundido.",
         note: "Acompañados con papas."
       },
       margarita: {
@@ -1427,6 +1463,8 @@ const translations = {
       "magro-tomate": { title: "Pork with tomato", description: "Pork and tomato sandwich.", note: "Served with potato chips." },
       "lomo-ajos-tiernos": { title: "Pork loin with tender garlic", description: "Pork loin sandwich with tender garlic shoots.", note: "Served with potato chips." },
       "bocadillo-atun-tomate": { title: "Tuna and tomato sandwich", description: "Tuna and tomato sandwich.", note: "Served with potato chips." },
+      "bocadillo-jamon-tomate-rucula": { title: "Ham, tomato and rocket sandwich", description: "Sandwich with ham, fresh tomato and rocket.", note: "Served with potato chips." },
+      "bocadillo-lomo-queso": { title: "Pork loin and cheese sandwich", description: "Sandwich with pork loin and melted cheese.", note: "Served with potato chips." },
       margarita: { title: "Margherita", description: "Classic pizza with tomato, mozzarella, and basil." },
       tartufata: { title: "Tartufata", description: "Ham, cheese, and truffle." },
       "jamon-queso": { title: "Ham and cheese", description: "Ham and cheese pizza." },
@@ -1601,6 +1639,8 @@ const translations = {
       "magro-tomate": { title: "Schweinefleisch mit Tomate", description: "Bocadillo mit Schweinefleisch und Tomate.", note: "Mit Kartoffelchips serviert." },
       "lomo-ajos-tiernos": { title: "Schweinelende mit jungem Knoblauch", description: "Bocadillo mit Schweinelende und jungem Knoblauch.", note: "Mit Kartoffelchips serviert." },
       "bocadillo-atun-tomate": { title: "Bocadillo mit Thunfisch und Tomate", description: "Bocadillo mit Thunfisch und Tomate.", note: "Mit Kartoffelchips serviert." },
+      "bocadillo-jamon-tomate-rucula": { title: "Bocadillo mit Schinken, Tomate und Rucola", description: "Bocadillo mit Schinken, frischer Tomate und Rucola.", note: "Mit Kartoffelchips serviert." },
+      "bocadillo-lomo-queso": { title: "Bocadillo mit Schweinelende und Käse", description: "Bocadillo mit Schweinelende und geschmolzenem Käse.", note: "Mit Kartoffelchips serviert." },
       margarita: { title: "Margherita", description: "Klassische Pizza mit Tomate, Mozzarella und Basilikum." },
       tartufata: { title: "Tartufata", description: "Schinken, Käse und Trüffel." },
       "jamon-queso": { title: "Schinken und Käse", description: "Pizza mit Schinken und Käse." },
