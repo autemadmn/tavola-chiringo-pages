@@ -5,8 +5,12 @@
 node_modules/
 .cache/
 .wrangler/
+supabase/.temp/
 dist/
 build/
+.env
+.env.*
+!.env.example
 
 # Local system files.
 .DS_Store

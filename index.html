@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260525-pulpo">
+  <link rel="stylesheet" href="/style.css?v=20260722-supabase">
 </head>
 <body>
   <main class="menu-shell">
@@ -39,16 +39,16 @@
 
       <article class="dish-preview" id="dishPreview" aria-live="polite" tabindex="-1">
         <div class="image-frame menu-item-image" id="imageFrame" role="button" tabindex="0" aria-label="Ampliar imagen del plato">
-          <img id="dishImage" src="assets/comidas/desayuno/desayuno-tradicional.webp" alt="Desayuno tradicional">
+          <img id="dishImage" src="assets/comidas/genericas/pasta.webp" alt="" loading="lazy" decoding="async" width="1200" height="1200">
         </div>
         <div class="preview-copy">
-          <p id="dishCategory">Desayuno</p>
-          <h2 id="dishTitle">Desayuno tradicional</h2>
-          <span id="dishPrice">6,50 €</span>
-          <p id="dishDescription">Café o té/infusión + zumo + tostada a elegir: aceite, mermelada, tomate, mantequilla o bollería.</p>
+          <p id="dishCategory"></p>
+          <h2 id="dishTitle">Cargando la carta…</h2>
+          <span id="dishPrice"></span>
+          <p id="dishDescription"></p>
           <p class="dish-note is-hidden" id="dishNote"></p>
           <p class="photo-disclaimer" id="photoDisclaimer">*Fotos orientativas</p>
-          <p class="sr-only" id="dishStatus">Plato seleccionado: Desayuno tradicional.</p>
+          <p class="sr-only" id="dishStatus">Cargando la carta…</p>
         </div>
       </article>
     </section>
@@ -59,7 +59,7 @@
   <div class="image-lightbox" id="imageLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Imagen ampliada">
     <button class="image-lightbox-close" id="imageLightboxClose" type="button" aria-label="Cerrar imagen ampliada">×</button>
     <div class="image-lightbox-panel">
-      <img class="image-lightbox-img" id="imageLightboxImg" src="" alt="" loading="lazy" decoding="async">
+      <img class="image-lightbox-img" id="imageLightboxImg" src="" alt="" loading="lazy" decoding="async" width="1200" height="1200">
     </div>
   </div>
 
@@ -73,6 +73,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=20260716-bocadillos"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
