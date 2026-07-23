@@ -1,12 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
-
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = supabaseUrl && supabaseAnonKey
-  ? createClient(supabaseUrl, supabaseAnonKey, {
-      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
-    })
-  : null;
+let realtimeClient = null;
+let realtimeClientPromise = null;
 
 let foodGroups = [];
 let beverageGroups = [];
@@ -19,6 +14,28 @@ let realtimeReconnectTimer = null;
 let realtimeRefreshTimer = null;
 let realtimeReconnectAttempt = 0;
 let isPageClosing = false;
+let initialMenuRequest = null;
+
+async function getRealtimeClient() {
+  if (!supabaseUrl || !supabaseAnonKey) return null;
+  if (realtimeClient) return realtimeClient;
+
+  if (!realtimeClientPromise) {
+    realtimeClientPromise = import('@supabase/supabase-js')
+      .then(({ createClient }) => {
+        realtimeClient = createClient(supabaseUrl, supabaseAnonKey, {
+          auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
+        });
+        return realtimeClient;
+      })
+      .catch((error) => {
+        realtimeClientPromise = null;
+        throw error;
+      });
+  }
+
+  return realtimeClientPromise;
+}
 
 const categoryLayout = {
   "10000000-0000-4000-8000-000000000001": {
@@ -224,55 +241,65 @@ function formatNumericPrice(price) {
 }
 
 function getProductImageUrl(imagePath) {
-  if (!imagePath || !supabase) return fallbackProductImage;
-  return supabase.storage.from('product-images').getPublicUrl(imagePath).data.publicUrl;
+  if (!imagePath || !supabaseUrl) return fallbackProductImage;
+  const encodedPath = imagePath.split('/').map(encodeURIComponent).join('/');
+  return `${supabaseUrl}/storage/v1/object/public/product-images/${encodedPath}`;
 }
 
 export async function getMenu(slug) {
-  if (!supabase) {
+  if (!supabaseUrl || !supabaseAnonKey) {
     throw new Error('Faltan VITE_SUPABASE_URL y VITE_SUPABASE_ANON_KEY.');
   }
 
-  const { data, error } = await supabase
-    .from('restaurants')
-    .select(`
+  const select = `
+    id,
+    slug,
+    name,
+    default_locale,
+    locales,
+    sold_out_behavior,
+    categories!categories_restaurant_id_fkey(
       id,
-      slug,
       name,
-      default_locale,
-      locales,
-      sold_out_behavior,
-      categories!categories_restaurant_id_fkey(
+      position,
+      section,
+      is_active,
+      products!products_category_restaurant_fkey(
         id,
+        restaurant_id,
+        category_id,
         name,
-        position,
-        section,
+        description,
+        price,
+        price_display,
+        price_note,
+        image_path,
+        is_available,
         is_active,
-        products!products_category_restaurant_fkey(
-          id,
-          restaurant_id,
-          category_id,
-          name,
-          description,
-          price,
-          price_display,
-          price_note,
-          image_path,
-          is_available,
-          is_active,
-          position,
-          name_size
-        )
+        position,
+        name_size
       )
-    `)
-    .eq('slug', slug)
-    .eq('categories.is_active', true)
-    .eq('categories.products.is_active', true)
-    .order('position', { referencedTable: 'categories', ascending: true })
-    .order('position', { referencedTable: 'categories.products', ascending: true })
-    .single();
-
-  if (error) throw error;
+    )
+  `.replace(/\s+/g, '');
+  const search = new URLSearchParams({
+    select,
+    slug: `eq.${slug}`,
+    'categories.is_active': 'eq.true',
+    'categories.products.is_active': 'eq.true',
+    'categories.order': 'position.asc',
+    'categories.products.order': 'position.asc'
+  });
+  const response = await fetch(`${supabaseUrl}/rest/v1/restaurants?${search}`, {
+    headers: {
+      apikey: supabaseAnonKey,
+      Authorization: `Bearer ${supabaseAnonKey}`,
+      Accept: 'application/vnd.pgrst.object+json'
+    }
+  });
+  if (!response.ok) {
+    throw new Error(`No se pudo cargar la carta (${response.status}).`);
+  }
+  const data = await response.json();
 
   const categories = (data.categories || []).map((category) => ({
     ...category,
@@ -283,6 +310,10 @@ export async function getMenu(slug) {
 
   return { ...data, categories };
 }
+
+// Empieza la consulta mientras el resto de la interfaz termina de inicializarse.
+// La misma promesa se consume en la primera carga visual para no duplicar la petición.
+initialMenuRequest = getMenu('tavola');
 
 function productToLegacyShape(product) {
   return {
@@ -376,7 +407,9 @@ function renderMenuError() {
 async function refreshMenu({ showLoading = false } = {}) {
   if (showLoading) renderLoadingSkeleton();
   try {
-    const menu = await getMenu('tavola');
+    const request = initialMenuRequest || getMenu('tavola');
+    initialMenuRequest = null;
+    const menu = await request;
     applyMenuData(menu);
     dishPreview.classList.remove('is-loading');
     renderTabs();
@@ -406,6 +439,8 @@ function scheduleRealtimeReconnect(restaurantId) {
 }
 
 async function subscribeToMenu(restaurantId) {
+  if (isPageClosing) return;
+  const supabase = await getRealtimeClient();
   if (!supabase || isPageClosing) return;
   if (menuChannel) {
     await supabase.removeChannel(menuChannel);
@@ -448,7 +483,7 @@ window.addEventListener('beforeunload', () => {
   isPageClosing = true;
   window.clearTimeout(realtimeReconnectTimer);
   window.clearTimeout(realtimeRefreshTimer);
-  if (menuChannel && supabase) supabase.removeChannel(menuChannel);
+  if (menuChannel && realtimeClient) realtimeClient.removeChannel(menuChannel);
 });
 
 const hamacaTariffs = [
