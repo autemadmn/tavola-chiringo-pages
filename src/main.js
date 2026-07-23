@@ -227,6 +227,14 @@ const nameSizeClasses = {
 const nameSizeClassList = Object.values(nameSizeClasses);
 const fallbackProductImage = 'assets/comidas/genericas/pasta.webp';
 
+// Extras de servicio (pan, picos, salsas): son texto informativo, sin foto ni
+// ficha ampliada. Se pintan como items estáticos, no clicables.
+const nonInteractiveLegacyIds = new Set([
+  'servicio-pan',
+  'servicio-picos-pan-adicional',
+  'salsas-adicionales'
+]);
+
 export function t(field, locale, defaultLocale = 'es') {
   if (!field || typeof field !== 'object' || Array.isArray(field)) return '';
   const requested = typeof field[locale] === 'string' ? field[locale].trim() : '';
@@ -318,9 +326,10 @@ export async function getMenu(slug) {
 initialMenuRequest = getMenu('tavola');
 
 function productToLegacyShape(product) {
+  const legacyId = legacyProductIds[product.id] || null;
   return {
     id: product.id,
-    legacyId: legacyProductIds[product.id] || null,
+    legacyId,
     name: product.name,
     description: product.description,
     priceNote: product.price_note,
@@ -328,7 +337,8 @@ function productToLegacyShape(product) {
     priceDisplay: product.price_display,
     image: getProductImageUrl(product.image_path),
     isAvailable: product.is_available,
-    nameSize: product.name_size || 'normal'
+    nameSize: product.name_size || 'normal',
+    hasDetail: !nonInteractiveLegacyIds.has(legacyId)
   };
 }
 
