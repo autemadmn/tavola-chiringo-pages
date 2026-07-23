@@ -1,3 +1,5 @@
+import { initialMenuSnapshot } from './menu-snapshot.js';
+
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 let realtimeClient = null;
@@ -473,8 +475,16 @@ async function subscribeToMenu(restaurantId) {
 async function initializeMenu() {
   setupLanguageSwitcher();
   updateStaticText();
-  renderTabs();
-  renderLoadingSkeleton();
+  if (initialMenuSnapshot?.categories?.length) {
+    applyMenuData(initialMenuSnapshot);
+    dishPreview.classList.remove('is-loading');
+    renderTabs();
+    renderActiveSection();
+    updateActiveTabs();
+  } else {
+    renderTabs();
+    renderLoadingSkeleton();
+  }
   const menu = await refreshMenu();
   if (menu) await subscribeToMenu(menu.id);
 }

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "snapshot:menu": "node scripts/refresh-menu-snapshot.mjs",
+    "build": "npm run snapshot:menu && vite build",
     "preview": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
